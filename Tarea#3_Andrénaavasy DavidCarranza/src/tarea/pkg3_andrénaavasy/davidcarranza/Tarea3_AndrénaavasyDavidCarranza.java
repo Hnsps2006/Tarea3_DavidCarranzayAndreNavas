@@ -20,7 +20,7 @@ public class Tarea3_AndrénaavasyDavidCarranza {
         System.out.print("Bienvenido a mi programa");
         entrada.nextLine();
          int opcion;
-        do {
+        do { //obligo al usuario entrar obligatoriamente al menu
             System.out.println("Menú:");
             System.out.println("1. Programa 1");
             System.out.println("2. Programa 2");
@@ -30,14 +30,14 @@ public class Tarea3_AndrénaavasyDavidCarranza {
             System.out.println("6. Salir del programa");
             System.out.print("Seleccione una opción: ");
 
-            opcion = entrada.nextInt();
+            opcion = entrada.nextInt(); //leo menu
             entrada.nextLine(); // Limpiar el buffer después de leer el número
 
-            switch (opcion) {
+            switch (opcion) { //dependiendo de la opcion que elija el usuario entra a estos diferentes case
                 case 1:
                     System.out.println("Usted ha elegido el Programa 1");
-                    mensajeImprimirMensaje("Bienvenido al primer programa 1. Veamos si podemos formar la palabra");
-                    break;
+                    mensajeImprimirMensaje("Bienvenido al primer programa 1. Veamos si podemos formar la palabra"); //ejecuto metodo 1
+                    break; //cierro el case 1 para que no se vuelta a ejecutar
                 case 2:
                     System.out.println("Usted ha elegido el Programa 2");
                     numerosprimeros("Bienvenido al segundo programa 2. Números primero");
@@ -53,56 +53,58 @@ public class Tarea3_AndrénaavasyDavidCarranza {
                     break;
                 case 5:
                     System.out.println("Usted ha elegido el Programa 5");
-                    int[] arreglo = new int[10];
+                    int[] arreglo = {1, 2, 3, 4, 5,6,7,8,9,10};  // Inicialización directa con valores conocidos,hasta 10 para que le pida 10 veces al usuario
                     completararreglo(arreglo);
                     imprimirarreglo(arreglo);
                     break;
                 case 6:
-                    System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    System.out.println("Saliendo del programa. ¡Hasta luego!"); //salida del programa
                     break;
                 default:
-                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+                    System.out.println("Opción no válida. Inténtelo de nuevo."); //si pone cualquier otro entero que no sea menor o igual que 6
                     break;
             }
         } while (opcion != 6);
     }
 
-    public static String mensajeImprimirMensaje(String mensaje) {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println(mensaje);
-        System.out.println("Ingrese la primera cadena: ");
+    public static String mensajeImprimirMensaje(String mensaje) { //metodo 1 lo declaramos como string
+        Scanner entrada = new Scanner(System.in); //importo scanner para leer y lo llamo entrada
+        System.out.println(mensaje); 
+        System.out.println("Ingrese la primera cadena: "); //le pido ingresar cadena 1
         String cadena1 = entrada.nextLine();
-        System.out.println("Ingrese la segunda cadena: ");
+        System.out.println("Ingrese la segunda cadena: "); //le pido ingresar al usuario la cadena 2
         String cadena2 = entrada.nextLine();
         System.out.println("");
 
-        int longituddecadena1 = cadena1.length();
-        int longituddecadena2 = cadena2.length();
-        String cadenalarga = "";
+        int longituddecadena1 = cadena1.length(); //declaro como entero el tamaño de cadena 1
+        int longituddecadena2 = cadena2.length(); //y cadena 2
+        String cadenalarga = ""; 
         String cadenacorta = ""; 
 
-        if (longituddecadena1 > longituddecadena2) {
+        if (longituddecadena1 > longituddecadena2) { //esto es para saber el orden si la cadena 1 es mayor a cantidad de posiciones que la cade na 2 entonces cadena 1 es la mas larga
+            //y cadena 2 la ams pequeña igual con else if es lo mismo pero arreves
             cadenalarga = cadena1;
             cadenacorta = cadena2;
         } else if (longituddecadena2 > longituddecadena1) {
             cadenalarga = cadena2;
             cadenacorta = cadena1;
         } else {
-            System.out.println("Por favor, ingrese otra cadena debido a que las cadenas son iguales al tamaño");
-            return "";
+            System.out.println("Por favor, ingrese otra cadena debido a que las cadenas son iguales al tamaño"); //si son igual imprime lo siguiente
+            return ""; //return para que regrese al main si sale igual 
         }
 
-        String cadenalarganueva = cadenalarga.toLowerCase();
+        String cadenalarganueva = cadenalarga.toLowerCase();  //validar que pueden ser minúsculas
         String cadenacortanueva = cadenacorta.toLowerCase();
-         boolean seforma = true;
+         boolean seforma = true; //se forma la declaro verdaadera 
 
         for (int i = 0; i < cadenacortanueva.length(); i++) {
-            char letra = cadenacortanueva.charAt(i);
-            boolean encontrada = false;
+            char letra = cadenacortanueva.charAt(i); //practicamente lo que hago es que le asigno a letra una sola letra de cadenacorta y eso lo meto a un ciclo que tiene cosntante cambio porque el i
+            //es contador que aumenta al acaabar cada ciclo
+            boolean encontrada = false; //encontrada la declaro como falsa porque si encontrada queda como falsa no se puede formar por eso luego hago una condición con if
 
-            for (int j = 0; j < cadenalarganueva.length(); j++) {
+            for (int j = 0; j < cadenalarganueva.length(); j++) { //nuevo ciclo pero para cadena larga
                 if (letra == cadenalarganueva.charAt(j)) {
-                    encontrada = true;
+                    encontrada = true; //y si se encuentra encontrada sera verdadera para que en el if se pueda ejecutar todo 
                     break;
                 }
             }
@@ -118,7 +120,7 @@ public class Tarea3_AndrénaavasyDavidCarranza {
         } else {
             System.out.println("No se puede formar " + cadenacorta + " con las letras de " + cadenalarga);
         }
-        return "";
+        return ""; //regreso al main
     }
     
     public static String numerosprimeros(String mensaje) { 
@@ -154,19 +156,22 @@ public class Tarea3_AndrénaavasyDavidCarranza {
     public static String ordenaralfabeticamente(String mensaje){  
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese una cadena: ");
-        String cadena = entrada.nextLine().toLowerCase();
+        String cadena = entrada.nextLine().toLowerCase(); 
 
-        for (int i = 0; i < cadena.length() - 1; i++) {
+        for (int i = 0; i < cadena.length() - 1; i++) { //este ciclo se repetira si y solo si i es menor que tamaño-1 esto es porque para realizar múltiples pasadas 
+            //de comparación e intercambio de caracteres en la cadena. La variable i representa el número de pasadas que se han realizado hasta el momento. 
+            //El bucle se ejecuta mientras i sea menor que la longitud de la cadena menos 1, ya que en cada pasada el último carácter estará ya en su posición correcta.
         boolean cambio = false;
-        for (int j = 0; j < cadena.length() - 1 - i; j++) {
-                if (cadena.charAt(j) > cadena.charAt(j + 1)) {
-                    // Intercambiar los caracteres
-                    char caracter = cadena.charAt(j);
-                    cadena = cadena.substring(0, j) + cadena.charAt(j + 1) + cadena.charAt(j)
-                            + cadena.substring(j + 2);
-                    cambio = true;
+            for (int j = 0; j < cadena.length() - 1 - i; j++) {  //se utiliza para comparar los caracteres adyacentes en la cadena y realizar intercambios si es necesario. 
+                //La variable j representa la posición actual en la cadena durante una pasada determinada.
+                    if (cadena.charAt(j) > cadena.charAt(j + 1)) {   
+                        // Intercambiar los caracteres
+                        char caracter = cadena.charAt(j);
+                        cadena = cadena.substring(0, j) + cadena.charAt(j + 1) + cadena.charAt(j) //para obtener subcadenas de la cadena original y construir la nueva cadena con los caracteres intercambiados. 
+                                + cadena.substring(j + 2);
+                        cambio = true;
+                    }
                 }
-            }
             if (cambio == false) {
                 // Si no se ha realizado ningún intercambio en esta iteración, la cadena ya está ordenada
                 break;
@@ -176,31 +181,31 @@ public class Tarea3_AndrénaavasyDavidCarranza {
         String letras = "";
         for (int i = 0; i < cadena.length(); i++) {
             char caracter = cadena.charAt(i);
-            if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {
-                letras += caracter;
+            if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {  //solo letras y solo letras podran cumplir la función
+                letras += caracter; //accumulador
             }
         }
 
         // Contar la cantidad de números
         int cantidadnum = 0;
         for (int i = 0; i < cadena.length(); i++) {
-            if (cadena.charAt(i) >= '0' && cadena.charAt(i) <= '9') {
-                cantidadnum=cantidadnum+1;
+            if (cadena.charAt(i) >= '0' && cadena.charAt(i) <= '9') { //condición que solo números podran cumplir la fúncion
+                cantidadnum=cantidadnum+1; 
             }
         }
         
-        System.out.println("Cadena ordenada alfabéticamente: " + letras);
-        System.out.println("Cantidad de números en la cadena: " + cantidadnum);
+        System.out.println("Cadena ordenada alfabéticamente: " + letras); //creamos dos accumuladores uno de letra para poder sumar las letras  y lo ponemos alfabeticamento con los ciclso for y los otros métodos de arriba etc.
+        System.out.println("Cantidad de números en la cadena: " + cantidadnum); //el otro accumulador es de numeros y solo cuenta cuantos numeros hay no dice el numero
         return "";
     }
     
-    public static void completararreglo(int[] arreglo) { 
+    public static void completararreglo(int[] arreglo) { //metodo declarado como entero en arreglos 
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese 10 posiciones cualquier de numeros:");
 
         for (int i = 0; i < arreglo.length; i++) {
             System.out.print("Ingrese el valor para la posición " + i + ": ");
-            arreglo[i] = entrada.nextInt();
+            arreglo[i] = entrada.nextInt(); //repetir la pregunta dependiendo de la cantidad de si i es menor que tamaño que el arreglo,que esa cantidad esta en el main
         }
     }
 
@@ -211,7 +216,7 @@ public class Tarea3_AndrénaavasyDavidCarranza {
         for (int i = 0; i < arreglo.length; i++) {
             System.out.println("La Posicion es " + i + ": " + arreglo[i]);
         }
-    }
+    } //se repite condición
     
     public static void Imprision() {
         // Crear un objeto Scanner para leer la entrada del usuario
@@ -237,7 +242,7 @@ public class Tarea3_AndrénaavasyDavidCarranza {
 
             if ((caracter >= '0' && caracter <= '9')) {
                 int valorNumero = caracter - '0';
-                resultado += (char) (valorNumero + 64) + "-";
+                resultado += (char) (valorNumero + 64) + "-"; 
             } else if ((caracter >= 'a' && caracter <= 'z') ||
                        (caracter >= 'A' && caracter <= 'Z')) {
                 int valorLetra = (caracter + "").toUpperCase().charAt(0) - 'A' + 1;
