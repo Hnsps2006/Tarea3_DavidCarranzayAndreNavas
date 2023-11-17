@@ -156,7 +156,6 @@ public class Tarea3_AndrénaavasyDavidCarranza {
         System.out.println("Ingrese una cadena: ");
         String cadena = entrada.nextLine().toLowerCase();
 
-        // Ordenar los caracteres alfabéticamente sin usar toCharArray
         for (int i = 0; i < cadena.length() - 1; i++) {
         boolean cambio = false;
         for (int j = 0; j < cadena.length() - 1 - i; j++) {
